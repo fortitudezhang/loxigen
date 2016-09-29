@@ -2,12 +2,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
-
     <groupId>org.projectfloodlight</groupId>
     <artifactId>openflowj</artifactId>
     <version>3.0.0-SNAPSHOT</version>
@@ -28,6 +22,19 @@
         <developerConnection>scm:git:git@github.com:floodlight/loxigen.git</developerConnection>
         <url>git@github.com:floodlight/loxigen.git</url>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Nexus</name>
+            <url>http://nexus.kghost.info/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus</id>
+            <name>Nexus</name>
+            <url>http://nexus.kghost.info/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,7 +66,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>19.0</version>
+            <version>18.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -201,6 +208,7 @@
                 </executions>
                 <configuration>
                     <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                         <manifest>
                             <mainClass>org.projectfloodlight.core.Main</mainClass>
                         </manifest>
@@ -231,7 +239,26 @@ i                                  <ciNodeName>${env.NODE_NAME}</ciNodeName>
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.0.1</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.projectfloodlight.*</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
             <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
