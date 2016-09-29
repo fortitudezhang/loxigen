@@ -871,3 +871,89 @@ struct of_bsn_tlv_icmpv6_chksum : of_bsn_tlv {
     uint16_t length;
     uint16_t value;
 };
+
+struct of_bsn_tlv_ipv6_src : of_bsn_tlv {
+    uint16_t type == 126;
+    uint16_t length;
+    of_ipv6_t value;
+};
+
+struct of_bsn_tlv_ipv6_dst : of_bsn_tlv {
+    uint16_t type == 127;
+    uint16_t length;
+    of_ipv6_t value;
+};
+
+struct of_bsn_tlv_push_vlan_on_ingress : of_bsn_tlv {
+    uint16_t type == 128;
+    uint16_t length;
+};
+
+// apply_packets and apply_bytes are stat counters, like rx_packet
+// identifies packets and bytes applied to some action, for example:
+// packets with inet L3/L4 headers for netflow
+
+struct of_bsn_tlv_apply_packets : of_bsn_tlv {
+    uint16_t type == 129;
+    uint16_t length;
+    uint64_t value;
+};
+
+struct of_bsn_tlv_apply_bytes : of_bsn_tlv {
+    uint16_t type == 130;
+    uint16_t length;
+    uint64_t value;
+};
+
+struct of_bsn_tlv_eth_type : of_bsn_tlv {
+    uint16_t type == 131;
+    uint16_t length;
+    uint16_t value;
+};
+
+struct of_bsn_tlv_ecn : of_bsn_tlv {
+    uint16_t type == 132;
+    uint16_t length;
+    uint8_t value;
+};
+
+struct of_bsn_tlv_tcp_flags : of_bsn_tlv {
+    uint16_t type == 133;
+    uint16_t length;
+    uint16_t value;
+};
+
+struct of_bsn_tlv_l3_interface_class_id : of_bsn_tlv {
+    uint16_t type == 134;
+    uint16_t length;
+    uint32_t value;
+};
+
+struct of_bsn_tlv_l3_src_class_id : of_bsn_tlv {
+    uint16_t type == 135;
+    uint16_t length;
+    uint32_t value;
+};
+
+struct of_bsn_tlv_l3_dst_class_id : of_bsn_tlv {
+    uint16_t type == 136;
+    uint16_t length;
+    uint32_t value;
+};
+
+struct of_bsn_tlv_egress_only : of_bsn_tlv {
+    uint16_t type == 137;
+    uint16_t length;
+};
+
+struct of_bsn_tlv_ingress_port_group_id : of_bsn_tlv {
+    uint16_t type == 138;
+    uint16_t length;
+    uint32_t value;
+};
+
+struct of_bsn_tlv_egress_port_group_id : of_bsn_tlv {
+    uint16_t type == 139;
+    uint16_t length;
+    uint32_t value;
+};
