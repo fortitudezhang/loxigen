@@ -75,4 +75,6 @@ public enum MatchFields {
     BSN_INNER_ETH_SRC,
     BSN_INNER_VLAN_VID,
     BSN_VFI,
+    CT_STATE,
+    CT_ZONE,
 }
