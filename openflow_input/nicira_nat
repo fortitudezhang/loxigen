@@ -35,7 +35,9 @@ enum of_nx_nat_flags(wire_type=uint16_t, bitmask=True) {
      OFP_NX_NAT_F_PROTO_RANDOM = 0x10,
 };
 
-struct of_action_nicira_nat : of_action_nicira {
+// According to the OF standard, experimenter actions should always padded
+// to 8 Bytes.
+struct of_action_nicira_nat(align=8, length_includes_align=True) : of_action_nicira {
     uint16_t type == 65535;
     uint16_t len;
     uint32_t experimenter == 0x2320;
