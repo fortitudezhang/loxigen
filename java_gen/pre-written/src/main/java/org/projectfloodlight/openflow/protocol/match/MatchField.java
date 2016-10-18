@@ -300,6 +300,12 @@ public class MatchField<F extends OFValueType<F>> {
     public final static MatchField<VFI> BSN_VFI =
             new MatchField<VFI>("bsn_vfi", MatchFields.BSN_VFI);
 
+    public final static MatchField<U32> CT_STATE =
+        new MatchField<U32>("ct_state", MatchFields.CT_STATE);
+
+    public final static MatchField<U16> CT_ZONE =
+        new MatchField<U16>("ct_zone", MatchFields.CT_ZONE);
+
     public String getName() {
         return name;
     }

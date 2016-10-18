@@ -775,6 +775,11 @@ exceptions = {
         'of_oxm_bsn_vfi' : { 'value' : vfi },
         'of_oxm_bsn_vfi_masked' : { 'value' : vfi, 'value_mask' : vfi },
 
+        'of_oxm_ct_state' : { 'value' : u32obj },
+        'of_oxm_ct_state_masked' : { 'value' : u32obj, 'value_mask' : u32obj },
+
+        'of_oxm_ct_zone' : { 'value' : u16obj },
+	
         'of_table_stats_entry': { 'wildcards': table_stats_wildcards },
         'of_match_v1': { 'vlan_vid' : vlan_vid_match, 'vlan_pcp': vlan_pcp,
                 'eth_type': eth_type, 'ip_dscp': ip_dscp, 'ip_proto': ip_proto,
